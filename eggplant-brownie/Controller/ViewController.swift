@@ -34,13 +34,13 @@ class ViewController: UIViewController {
 
 // Abordagem com guard let
 
-guard let nomeDaRefeicao = nomeTextField?.text  else {
-    return
-}
-
-guard let felicidadeDaRefeicao = Int(felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
-    return
-}
-
-print("Comi \(refeicao.nome) e fiquei com felicidade \(refeicao.felicidade)")
-
+//guard let nomeDaRefeicao = nomeTextField?.text  else {
+//    return
+//}
+//
+//guard let felicidadeDaRefeicao = Int(felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
+//    return
+//}
+//
+//print("Comi \(refeicao.nome) e fiquei com felicidade \(refeicao.felicidade)")
+//
