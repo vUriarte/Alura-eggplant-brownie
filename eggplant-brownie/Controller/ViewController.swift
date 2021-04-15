@@ -14,33 +14,19 @@ class ViewController: UIViewController {
 
     @IBAction func adicionar(_ sender: Any) {
         
-        if let nomeDaRefeicao = nomeTextField?.text, let felicidadeDaRefeicao = felicidadeTextField?.text {
-            let nome = nomeDaRefeicao
-            if let felicidade = Int(felicidadeDaRefeicao) {
-                let refeicao : Refeicao = Refeicao (nome: nome, felicidade: felicidade)
-                print("Comi \(refeicao.nome) e fiquei com felicidade \(refeicao.felicidade)")
-
-            } else {
-                print ("ERRO AO CRIAR PRATO!")
-                
-            }
-            
+        guard let nomeDaRefeicao = nomeTextField?.text  else {
+            return
         }
 
+        guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
+            return
+        }
+        
+        let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade)
+
+        print("Comi \(refeicao.nome) e fiquei com felicidade \(refeicao.felicidade)")
+        
+        navigationController?.popViewController(animated: true)
+
     }
-    
 }
-
-
-// Abordagem com guard let
-
-//guard let nomeDaRefeicao = nomeTextField?.text  else {
-//    return
-//}
-//
-//guard let felicidadeDaRefeicao = Int(felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
-//    return
-//}
-//
-//print("Comi \(refeicao.nome) e fiquei com felicidade \(refeicao.felicidade)")
-//
