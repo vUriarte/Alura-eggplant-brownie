@@ -32,12 +32,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(adicionarItem))
         navigationItem.rightBarButtonItem = botaoAdicionaItem
+        
+        guard let diretorio = recuperaDiretorio() else { return }
+        
+        do {
+            let dados = try Data(contentsOf: diretorio)
+            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! Array<Item>
+            
+            itens = itensSalvos
+        } catch {
+            print(error.localizedDescription)
+        }
 
-    
     }
+    
+    
     @objc func adicionarItem() {
         let adicionarItensViewController = AdicionarItensViewController(delegate: self)
         navigationController?.pushViewController(adicionarItensViewController, animated: true)
+    }
+    
+    func recuperaDiretorio() -> URL? {
+        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let caminho = diretorio.appendingPathComponent("itens")
+        
+        return caminho
     }
     
     // MARK: - UITableViewDataSource
@@ -80,8 +99,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.reloadData()
         } else {
             Alerta(controller: self).exibe(mensagem: "Não foi possível atualizar a tabela")
-
         }
+        
+        do{
+            let dados = try NSKeyedArchiver.archivedData(withRootObject: itens, requiringSecureCoding: false)
+            guard let caminho = recuperaDiretorio() else { return }
+            try dados.write(to: caminho)
+        } catch {
+            print(error.localizedDescription)
+        }
+
     }
     
     func recuperaRefeicaoDoFormulario() -> Refeicao? {
