@@ -36,11 +36,15 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             let celula = gesture.view as! UITableViewCell
             guard let indexPath = tableView.indexPath(for: celula) else { return }
             let refeicao = refeicoes[indexPath.row]
-            let alerta = UIAlertController(title: refeicao.nome, message: refeicao.detalhes(), preferredStyle: .alert)
-            let botaoCancelar = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alerta.addAction(botaoCancelar)
-            present(alerta, animated: true, completion: nil)
+            RemoveRefeicaoViewController(controller: self).exibe(refeicao, handler: { alerta in
+                                                                    self.refeicoes.remove(at: indexPath.row)
+                                                                    self.tableView.reloadData()
+            })
         }
+    }
+    
+    func removeRefeicao(alerta: UIAlertAction) {
+        print("tá executando")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
