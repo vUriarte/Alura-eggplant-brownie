@@ -16,9 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Atributos
     var delegate: AdicionaRefeicaoDelegate?
-    var itens: Array<Item> = [Item(nome: "Molho de Tomate", calorias: 55),
-                              Item(nome: "Queijo", calorias: 65),
-                              Item(nome: "Frango", calorias: 75)]
+    var itens: Array<Item> = []
     var itensSelecionados: Array<Item> = []
     
     // MARK: - IBOutlets
@@ -32,18 +30,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(adicionarItem))
         navigationItem.rightBarButtonItem = botaoAdicionaItem
-        
-        guard let diretorio = recuperaDiretorio() else { return }
-        
-        do {
-            let dados = try Data(contentsOf: diretorio)
-            let itensSalvos = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(dados) as! Array<Item>
-            
-            itens = itensSalvos
-        } catch {
-            print(error.localizedDescription)
-        }
+        recuperaItens()
 
+    }
+    
+    func recuperaItens() {
+        itens = ItemDao().recupera()
     }
     
     
@@ -52,12 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         navigationController?.pushViewController(adicionarItensViewController, animated: true)
     }
     
-    func recuperaDiretorio() -> URL? {
-        guard let diretorio = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-        let caminho = diretorio.appendingPathComponent("itens")
-        
-        return caminho
-    }
+
     
     // MARK: - UITableViewDataSource
     
@@ -94,21 +81,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func add(_ item: Item) {
         itens.append(item)
-        
+        ItemDao().save(itens)
         if let tableView = itensTableView {
             tableView.reloadData()
         } else {
             Alerta(controller: self).exibe(mensagem: "Não foi possível atualizar a tabela")
         }
-        
-        do{
-            let dados = try NSKeyedArchiver.archivedData(withRootObject: itens, requiringSecureCoding: false)
-            guard let caminho = recuperaDiretorio() else { return }
-            try dados.write(to: caminho)
-        } catch {
-            print(error.localizedDescription)
-        }
-
     }
     
     func recuperaRefeicaoDoFormulario() -> Refeicao? {

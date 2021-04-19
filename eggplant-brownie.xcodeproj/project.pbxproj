@@ -12,6 +12,7 @@
 		5F89FD72262DC4FC00989133 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FD71262DC4FC00989133 /* Alerta.swift */; };
 		5F89FD77262E184000989133 /* RemoveRefeicaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FD76262E184000989133 /* RemoveRefeicaoViewController.swift */; };
 		5F89FD7C262E2E1100989133 /* RefeicaoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FD7B262E2E1100989133 /* RefeicaoDao.swift */; };
+		5F89FD81262E309A00989133 /* ItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F89FD80262E309A00989133 /* ItemDao.swift */; };
 		5F8F7C65262734BE00DF421A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F7C64262734BE00DF421A /* AppDelegate.swift */; };
 		5F8F7C67262734BE00DF421A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F7C66262734BE00DF421A /* SceneDelegate.swift */; };
 		5F8F7C69262734BE00DF421A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8F7C68262734BE00DF421A /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		5F89FD71262DC4FC00989133 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		5F89FD76262E184000989133 /* RemoveRefeicaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRefeicaoViewController.swift; sourceTree = "<group>"; };
 		5F89FD7B262E2E1100989133 /* RefeicaoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicaoDao.swift; sourceTree = "<group>"; };
+		5F89FD80262E309A00989133 /* ItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDao.swift; sourceTree = "<group>"; };
 		5F8F7C61262734BE00DF421A /* eggplant-brownie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eggplant-brownie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8F7C64262734BE00DF421A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8F7C66262734BE00DF421A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				5F8F7C9E2628772400DF421A /* Refeicao.swift */,
 				5F89FD71262DC4FC00989133 /* Alerta.swift */,
 				5F89FD7B262E2E1100989133 /* RefeicaoDao.swift */,
+				5F89FD80262E309A00989133 /* ItemDao.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				5F8F7CA4262877AF00DF421A /* Item.swift in Sources */,
 				5F8F7C69262734BE00DF421A /* ViewController.swift in Sources */,
 				5F89FD77262E184000989133 /* RemoveRefeicaoViewController.swift in Sources */,
+				5F89FD81262E309A00989133 /* ItemDao.swift in Sources */,
 				5F89FD7C262E2E1100989133 /* RefeicaoDao.swift in Sources */,
 				5F7724112629C7C7009AD9F3 /* AdicionarItensViewController.swift in Sources */,
 				5F8F7C65262734BE00DF421A /* AppDelegate.swift in Sources */,
