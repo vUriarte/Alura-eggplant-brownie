@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: - IBOutlets
     @IBOutlet var nomeTextField: UITextField?
     @IBOutlet var felicidadeTextField: UITextField?
-    @IBOutlet weak var itensTableView: UITableView!
+    @IBOutlet weak var itensTableView: UITableView?
     
     
     // MARK: - View life cicle
@@ -75,7 +75,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func add(_ item: Item) {
         itens.append(item)
-        itensTableView.reloadData()
+        
+        if let tableView = itensTableView {
+            tableView.reloadData()
+        } else {
+            Alerta(controller: self).exibe(mensagem: "Não foi possível atualizar a tabela")
+
+        }
     }
     
     
