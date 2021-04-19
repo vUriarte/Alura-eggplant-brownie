@@ -16,7 +16,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - Atributos
     var delegate: AdicionaRefeicaoDelegate?
-    //var itens: Array<String> = ["Molho de Tomate", "Queijo", "Frango"]
     var itens: Array<Item> = [Item(nome: "Molho de Tomate", calorias: 55),
                               Item(nome: "Queijo", calorias: 65),
                               Item(nome: "Frango", calorias: 75)]
@@ -55,12 +54,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     //MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let celula = tableView.cellForRow(at: indexPath) else { return }
         if celula.accessoryType == .none {
             celula.accessoryType = .checkmark
             let linhaDaTabela = indexPath.row
             itensSelecionados.append(itens[linhaDaTabela])
+            //dump(itensSelecionados)
+            
         } else {
             celula.accessoryType = .none
             let item = itens[indexPath.row]

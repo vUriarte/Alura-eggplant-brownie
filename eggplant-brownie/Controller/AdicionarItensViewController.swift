@@ -16,7 +16,6 @@ class AdicionarItensViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var nomeTextField: UITextField!
-    
     @IBOutlet weak var caloriasTextfield: UITextField!
     
     // MARK: - Atributos
